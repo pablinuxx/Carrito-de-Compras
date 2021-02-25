@@ -85,19 +85,27 @@ ul#example li p {
     transition-delay: 1s;
 }
 
-.btn0 {
-    background-color: red;
-    height: 45px;
-    width: 150px;
-    color: white;
-    outline: none;
-    border: none;
+
+/*MENU*/
+
+.submenu {
+    position: relative;
 }
 
-.btn0:hover {
+.submenu #carrito {
+    display: none;
+}
+
+.submenu:hover #carrito {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 1;
     background-color: white;
-    color: red;
-    transition: 0.4s;
+    padding: 20px;
+    min-height: 200px;
+    min-width: 100px;
 }
 
 .collection span {
@@ -233,8 +241,7 @@ nav ul li a {
 }
 
 .col-2 img {
-    max-width: 100%;
-    padding: 50px 0;
+    max-width: 150%;
 }
 
 .col-2 h1 {

@@ -16,28 +16,82 @@
 </head>
 
 <body>
-    <!--LOADER-->
+    <!--LOADER
     <div class="preloader">
         <div class="counter">0</div>
     </div>
+    -->
     <!--MENU-->
-    <div class="header">
-        <div class="contenedor">
-            <div class="nav-bar">
-                <div class="logo">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent d-flex justify-content-around">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
                     <img src="img/logo.svg" width="125px">
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Products </a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Contact</a></li>
-                        <li><a href="">Account</a></li>
-                    </ul>
-                </nav>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-success" href="#">Inicio</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-success" href="#" tabindex="-1"
+                    >Productos</a
+                  >
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="#" tabindex="-1"
+                      >Sobre Nosotros</a
+                    >
+                  </li>
+                  
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="#" tabindex="-1"
+                      >Contactanos</a
+                    >
+                  </li>
+              </ul>
+              <div class="float-rigth">
+                <ul class="list-unstyled">
+                  <li class="submenu">
+                    <img src="img/cart.png" id="img-carrito" />
+                    <div id="carrito" class="text-center">
+                      <table id="lista-carrito" class="table table-hover mb-0">
+                        <thead>
+                          <tr>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Cantidad</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                      <hr />
+                      <div>
+                        <a
+                          href="#"
+                          id="vaciar-carrito"
+                          class="btn btn-outline-danger"
+                          >Vaciar Carrito</a
+                        >
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="roww">
+          </div>
+        </nav>
+      </div>
+      <!--container-->
+
+    <div class="roww">
                 <div class="col-2">
                     <h1>Directo de la Huerta</h1>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea quaerat soluta officiis quisquam voluptas? Doloremque molestiae</p>
@@ -47,52 +101,52 @@
                     <img src="img/fruits tropical.png">
                 </div>
             </div>
-        </div>
+    </div>
     </div>
 
 
 
     <section class="collection">
-        <div class="container py-5">
+        <div class="container py-5" id="lista-productos">
             <h1 class="text-center">Nuevos Productos</h1>
             <div class="row py-5">
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/ajos.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="1" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/ciruelas.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="2" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/granada.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="3" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/limones.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="4" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
@@ -121,40 +175,40 @@
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/mangos.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="5" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/manzana.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="6" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/tomates.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="7" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/uvas.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="8" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
@@ -185,40 +239,40 @@
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/mangos.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="9" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/manzana.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="10" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/tomates.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="11" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="card">
                         <img src="img/uvas.jpg" class="img-fluid mb-3" alt="" />
-                        <input type="button" value="Add To Cart" />
-                        <h5>Product Name</h5>
+                        <input data-id="12" type="button" class="agregar-carrito " value="Add To Cart" />
+                        <h5 class="card-title">Product Name</h5>
                         <p>
-                            <small><del>$24.99</del><span>$12.99</span></small>
+                            <small><del>$24.99</del><span class="item-price">$12.99</span></small>
                         </p>
                     </div>
                 </div>
