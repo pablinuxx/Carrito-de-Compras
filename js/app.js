@@ -5,6 +5,11 @@ const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
 const listaProductos = document.querySelector("#lista-productos");
 let articulosCarrito = [];
 
+
+$(document).ready(obtenerLocalStorage());
+
+
+
 cargarEventListener();
 
 function cargarEventListener() {
@@ -41,7 +46,7 @@ function eliminarProducto(e) {
         //Eliminar del Arreglo por el data-id
         articulosCarrito = articulosCarrito.filter(producto => producto.id !== productId);
         //Vuelvo a dibujar el carrito con el nuevo arreglo
-        carritoHTML();
+        carritoHTML(articulosCarrito);
 
     }
 }
@@ -76,16 +81,17 @@ function leerDatosProducto(producto) {
         //Agrega elementos al arreglo de carrito
         articulosCarrito = [...articulosCarrito, infoProducto];
     }
-    carritoHTML();
+    gurdarLocalStorage(articulosCarrito);
+    carritoHTML(articulosCarrito);
 }
 
 //Muestra el carrito en el HTML
-function carritoHTML() {
+function carritoHTML(carrito) {
 
     //Limpiar el HTML
     limpiarHTML();
 
-    articulosCarrito.forEach(producto => {
+    carrito.forEach(producto => {
         const { imagen, descripcion, precio, cantidad, id } = producto;
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -116,6 +122,25 @@ function limpiarHTML() {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild);
     }
 }
+
+
+
+function gurdarLocalStorage(carrito) {
+    localStorage.setItem('productos', JSON.stringify(carrito));
+}
+
+function obtenerLocalStorage() {
+    if (localStorage.getItem('productos')) {
+        let carrito = JSON.parse(localStorage.getItem('productos', ));
+        carritoHTML(carrito);
+
+    } else {
+        console.log('Local Storage Vacio');
+    }
+
+
+}
+
 //TimerCountDown
 $('#example').countdown({
     date: '12/25/2021 00:00:00',
