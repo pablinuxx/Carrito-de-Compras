@@ -126,12 +126,12 @@ function limpiarHTML() {
 
 
 function gurdarLocalStorage(carrito) {
-    localStorage.setItem('productos', JSON.stringify(carrito));
+    window.localStorage.setItem('productos', JSON.stringify(carrito));
 }
 
 function obtenerLocalStorage() {
     if (localStorage.getItem('productos')) {
-        let carrito = JSON.parse(localStorage.getItem('productos', ));
+        let carrito = JSON.parse(window.localStorage.getItem('productos', ));
         carritoHTML(carrito);
 
     } else {
@@ -170,3 +170,50 @@ function counter() {
 }
 
 counter()
+
+
+
+
+//Consumir API
+/*
+$("#boton").on("click", leerApi);
+
+function leerApi() {
+    alert('Llamando a la API del BCRA, espere un cachito');
+    $.ajax({
+        url: 'http://api.estadisticasbcra.com/usd_of',
+        type: 'GET',
+        data: { d: "2021-02-03" },
+        // con la propiedad beforeSend le paso el tipo de autorizacion, en este caso será 'Bearer'  y luego el token que registré en el BCRA
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDYyNzE1MTksInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJwLnNhcmFzdWFAaG90bWFpbC5jb20ifQ.ynYRskQoA3kdMbfSOSkvUH2e2kIQyqzq6Sh0SgL9KT46hjoHrsfWCcZxwnDX0tW6I3fh-Q5Yb5iPXRz1Tli_Xw');
+        },
+
+        // si la conexion es exitosa, ejecutará la función "respuesta", definida allí mismo.
+        success: function(respuesta) {
+
+            // imprimo el valor de respuesta en la consola, para debug.
+            console.log(respuesta);
+
+            // creo una variable "listaAPI y le asigno el DIV que definí arriba, con el "id:lista-api".
+            var listaAPI = $("#lista-api");
+
+            $.each(respuesta, function(index, miembro) {
+                listaAPI.append(
+                    '<div>' +
+                    '<p>' + 'Fecha Cotizacion: ' + miembro.d + '<br>' +
+                    'Importe: $ ' + miembro.v + '<br>' +
+                    '<br>' + '______________________________________' +
+                    '</div>'
+                );
+            });
+        }, //fin function respuesta
+
+        error: function() {
+            alert("Hubo un error");
+            console.log("Error al leer la API");
+        }
+
+    });
+}
+*/
