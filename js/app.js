@@ -6,10 +6,6 @@ const listaProductos = document.querySelector("#lista-productos");
 let articulosCarrito = [];
 
 
-$(document).ready(obtenerLocalStorage());
-
-
-
 cargarEventListener();
 
 function cargarEventListener() {
@@ -18,6 +14,12 @@ function cargarEventListener() {
 }
 //Elimina productos
 carrito.addEventListener('click', eliminarProducto);
+
+//Muestra los productos de LocalStorage
+document.addEventListener('DOMContentLoader', () => {
+    articulosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carritoHTML();
+})
 
 //Vaciar el Carrito Btn
 vaciarCarritoBtn.addEventListener('click', () => {
@@ -46,7 +48,7 @@ function eliminarProducto(e) {
         //Eliminar del Arreglo por el data-id
         articulosCarrito = articulosCarrito.filter(producto => producto.id !== productId);
         //Vuelvo a dibujar el carrito con el nuevo arreglo
-        carritoHTML(articulosCarrito);
+        carritoHTML();
 
     }
 }
@@ -81,17 +83,16 @@ function leerDatosProducto(producto) {
         //Agrega elementos al arreglo de carrito
         articulosCarrito = [...articulosCarrito, infoProducto];
     }
-    gurdarLocalStorage(articulosCarrito);
-    carritoHTML(articulosCarrito);
+    carritoHTML();
 }
 
 //Muestra el carrito en el HTML
-function carritoHTML(carrito) {
+function carritoHTML() {
 
     //Limpiar el HTML
     limpiarHTML();
 
-    carrito.forEach(producto => {
+    articulosCarrito.forEach(producto => {
         const { imagen, descripcion, precio, cantidad, id } = producto;
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -113,7 +114,15 @@ function carritoHTML(carrito) {
       `;
         //Agrega el row al tbody
         contenedorCarrito.appendChild(row);
-    })
+    });
+
+    guardarStorage();
+
+}
+
+//Funciones de LocalStorage
+function guardarStorage() {
+    localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
 }
 
 //Eliminar Productos del tbody
@@ -123,23 +132,6 @@ function limpiarHTML() {
     }
 }
 
-
-
-function gurdarLocalStorage(carrito) {
-    window.localStorage.setItem('productos', JSON.stringify(carrito));
-}
-
-function obtenerLocalStorage() {
-    if (localStorage.getItem('productos')) {
-        let carrito = JSON.parse(window.localStorage.getItem('productos', ));
-        carritoHTML(carrito);
-
-    } else {
-        console.log('Local Storage Vacio');
-    }
-
-
-}
 
 //TimerCountDown
 $('#example').countdown({
