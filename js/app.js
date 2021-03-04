@@ -16,14 +16,16 @@ function cargarEventListener() {
 carrito.addEventListener('click', eliminarProducto);
 
 //Muestra los productos de LocalStorage
-document.addEventListener('DOMContentLoader', () => {
+document.addEventListener('DOMContentLoaded', () => {
     articulosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    console.log(JSON.stringify(articulosCarrito));
     carritoHTML();
 })
 
 //Vaciar el Carrito Btn
 vaciarCarritoBtn.addEventListener('click', () => {
     articulosCarrito = []; //Resetear el arreglo
+    localStorage.removeItem('carrito');
     limpiarHTML(); //Redibujamos el HTML
 })
 
