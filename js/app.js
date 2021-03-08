@@ -2,7 +2,10 @@
 const carrito = document.querySelector("#carrito");
 const contenedorCarrito = document.querySelector("#lista-carrito tbody");
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
-const listaProductos = document.querySelector("#lista-productos");
+const productosNuevos = document.querySelector("#productos-nuevos");
+const productosDestacados = document.querySelector("#productos-destacados");
+const productosDiscontinuados = document.querySelector("#productos-discontinuados");
+
 let articulosCarrito = [];
 
 
@@ -10,7 +13,11 @@ cargarEventListener();
 
 function cargarEventListener() {
     //Cuando Agregas un Producto presionando Comprar
-    listaProductos.addEventListener("click", agregarProducto);
+    productosNuevos.addEventListener("click", agregarProducto);
+    productosDestacados.addEventListener("click", agregarProducto);
+    productosDiscontinuados.addEventListener("click", agregarProducto);
+    
+    
 }
 //Elimina productos
 carrito.addEventListener('click', eliminarProducto);
@@ -18,7 +25,6 @@ carrito.addEventListener('click', eliminarProducto);
 //Muestra los productos de LocalStorage
 document.addEventListener('DOMContentLoaded', () => {
     articulosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    console.log(JSON.stringify(articulosCarrito));
     carritoHTML();
 })
 
@@ -32,6 +38,7 @@ vaciarCarritoBtn.addEventListener('click', () => {
 //Funciones
 function agregarProducto(e) {
     e.preventDefault();
+    console.log('funcion agregarProducto');
     if (e.target.classList.contains("agregar-carrito")) {
         const button = e.target;
         const item = button.closest('.card');
