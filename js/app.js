@@ -144,7 +144,7 @@ function limpiarHTML() {
 
 //TimerCountDown
 $('#example').countdown({
-    date: '12/25/2021 00:00:00',
+    date: '04/01/2021 00:00:00',
     offset: -3,
     day: 'Day',
     days: 'Dias',
