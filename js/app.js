@@ -184,3 +184,19 @@ function counter() {
 }
 
 counter();
+
+//Ajax
+let xhttp = new XMLHttpRequest();
+xhttp.open('GET', 'https://randomuser.me/api/?results=3');
+xhttp.send();
+xhttp.onreadystatechange=function(){
+  if (this.readyState ==4 && this.status ==200) {
+    let datosx = JSON.parse(this.responseText);   
+    const  datos = datosx.results;
+    console.log(datos);
+     const testimonioTexto = document.querySelector('.testiomonio-texto');     
+     console.log(datos[0].email);
+    
+  }
+}
+
