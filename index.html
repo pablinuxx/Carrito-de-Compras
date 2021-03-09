@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="shortcut icon" href="img/favicon.ico" />
     <!--Bootstrap-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
     <!--Fontawesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
     <!--Estilos CSS-->
     <link rel="stylesheet" href="style.css" />
 
     <title>FruitLand</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!--LOADER
     <div class="preloader">
         <div class="counter">0</div>
@@ -25,52 +34,67 @@
 -->
     <!--MENU-->
     <div class="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="img/logo.svg" width="125px" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="img/logo.svg" width="125px" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Inicio</a
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Inicio</a
                 >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#nuevosProductos">Frutas</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#productos-destacados">Verduras</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#productos-discontinuados">MilkShake</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contactanos">Contactanos</a>
-                        </li>
-                    </ul>
-                    <ul class="list-unstyled">
-                        <li class="submenu">
-                            <img src="img/cart.png" id="img-carrito" />
-                            <div id="carrito" class="text-center">
-                                <table id="lista-carrito" class="table table-hover mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Imagen</th>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Precio</th>
-                                            <th scope="col">Cantidad</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody></tbody>
-                                </table>
-                                <hr />
-                                <div>
-                                    <a href="#" id="vaciar-carrito" class="btn btn-outline-danger">Vaciar Carrito</a
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#productos-destacados">Verduras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#productos-discontinuados"
+                  >MilkShake</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contactanos">Contactanos</a>
+              </li>
+            </ul>
+            <ul class="list-unstyled">
+              <li class="submenu">
+                <img src="img/cart.png" id="img-carrito" />
+                <div id="carrito" class="text-center">
+                  <table id="lista-carrito" class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                  <hr />
+                  <div>
+                    <a
+                      href="#"
+                      id="vaciar-carrito"
+                      class="btn btn-outline-danger"
+                      >Vaciar Carrito</a
                     >
                   </div>
                 </div>
@@ -87,24 +111,30 @@
             soluta officiis quisquam voluptas? Doloremque molestiae
           </p>
           <a href="#nuevosProductos" class="btn">Saber Mas &#8594;</a>
-                                </div>
-                                <div class="col-2">
-                                    <img src="img/fruits tropical.png" />
-                                </div>
-                            </div>
-                </div>
+        </div>
+        <div class="col-2">
+          <img src="img/fruits tropical.png" />
+        </div>
+      </div>
+    </div>
 
-                <section class="collection" id="nuevosProductos">
-                    <div class="container py-5" id="productos-nuevos">
-                        <h1 class="text-center">Frutas</h1>
-                        <div class="row py-5">
-                            <div class="col-lg-3">
-                                <div class="card">
-                                    <img src="img/frutas/sandia.jpg" class="img-fluid mb-3" alt="" />
-                                    <input data-id="1" type="button" class="agregar-carrito" value="Add To Cart" />
-                                    <h5 class="card-title">Sandia</h5>
-                                    <p>
-                                        <small><del>$24.99</del
+    <section class="collection" id="nuevosProductos">
+      <div class="container py-5" id="productos-nuevos">
+        <h1 class="text-center">Frutas</h1>
+        <div class="row py-5">
+          <div class="col-lg-3">
+            <div class="card">
+              <img src="img/frutas/sandia.jpg" class="img-fluid mb-3" alt="" />
+              <input
+                data-id="1"
+                type="button"
+                class="agregar-carrito"
+                value="Add To Cart"
+              />
+              <h5 class="card-title">Sandia</h5>
+              <p>
+                <small
+                  ><del>$24.99</del
                   ><span class="item-price">$12.99</span></small
                 >
               </p>
@@ -148,7 +178,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/frutas/mandarina.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/frutas/mandarina.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="4"
                 type="button"
@@ -166,13 +200,23 @@
           </div>
         </div>
         <div class="row py-5">
-                            <div class="col-lg-3">
-                                <div class="card">
-                                    <img src="img/frutas/almendra.jpg" class="img-fluid mb-3" alt="" />
-                                    <input data-id="5" type="button" class="agregar-carrito" value="Add To Cart" />
-                                    <h5 class="card-title">Almendras</h5>
-                                    <p>
-                                        <small><del>$24.99</del
+          <div class="col-lg-3">
+            <div class="card">
+              <img
+                src="img/frutas/almendra.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
+              <input
+                data-id="5"
+                type="button"
+                class="agregar-carrito"
+                value="Add To Cart"
+              />
+              <h5 class="card-title">Almendras</h5>
+              <p>
+                <small
+                  ><del>$24.99</del
                   ><span class="item-price">$12.99</span></small
                 >
               </p>
@@ -180,7 +224,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/frutas/ciruelas.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/frutas/ciruelas.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="6"
                 type="button"
@@ -198,7 +246,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/frutas/frutilla.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/frutas/frutilla.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="7"
                 type="button"
@@ -277,7 +329,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/verduras/limones.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/verduras/limones.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="10"
                 type="button"
@@ -295,7 +351,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/verduras/tomates.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/verduras/tomates.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="11"
                 type="button"
@@ -313,7 +373,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/verduras/berenjena.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/verduras/berenjena.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="12"
                 type="button"
@@ -333,7 +397,11 @@
         <div class="row py-5">
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/verduras/espinaca.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/verduras/espinaca.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="13"
                 type="button"
@@ -369,7 +437,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/verduras/cebollas.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/verduras/cebollas.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="15"
                 type="button"
@@ -387,7 +459,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/verduras/zanahoria.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/verduras/zanahoria.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="16"
                 type="button"
@@ -433,7 +509,11 @@
         <div class="row py-5">
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/batidos/milkshake-chocolate.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/batidos/milkshake-chocolate.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="17"
                 type="button"
@@ -451,7 +531,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/batidos/milkshake-frutilla-naranja.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/batidos/milkshake-frutilla-naranja.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="18"
                 type="button"
@@ -469,7 +553,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/batidos/milkshake-frutilla.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/batidos/milkshake-frutilla.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="19"
                 type="button"
@@ -487,7 +575,11 @@
           </div>
           <div class="col-lg-3">
             <div class="card">
-              <img src="img/batidos/milkshake-kiwi.jpg" class="img-fluid mb-3" alt="" />
+              <img
+                src="img/batidos/milkshake-kiwi.jpg"
+                class="img-fluid mb-3"
+                alt=""
+              />
               <input
                 data-id="20"
                 type="button"
@@ -506,26 +598,24 @@
         </div>
       </div>
     </section>
-    <button id="boton">Leer Api BCRA</button>
-
-    <!-- div principal en donde se dibujara los datos de la API -->
-    <div id="lista-api"></div>
-
-
-
+   
     <section class="contact bg-light pt-5 text-center" id="contactanos">
       <div class="container">
         <div class="row py-3">
           <div class="col-lg-7 mx-auto">
             <input type="text" placeholder="Direccion de Email" />
-            <button class="btn4 my-5">SUSCRIBIRME</button>
+            <button class="btn4 my-5" id="boton-suscripcion">SUSCRIBIRME</button>
             <p>&#169; Copyright 2021 FruitLand All Rights Reserved</p>
           </div>
         </div>
       </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
@@ -538,5 +628,6 @@
     ></script>
     <script src="js/jquery.countdown.js"></script>
     <script src="js/app.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   </body>
 </html>

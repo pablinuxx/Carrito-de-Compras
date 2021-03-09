@@ -4,107 +4,123 @@ const contenedorCarrito = document.querySelector("#lista-carrito tbody");
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
 const productosNuevos = document.querySelector("#productos-nuevos");
 const productosDestacados = document.querySelector("#productos-destacados");
-const productosDiscontinuados = document.querySelector("#productos-discontinuados");
+const botonSuscripcion = document.querySelector("#boton-suscripcion");
+const productosDiscontinuados = document.querySelector(
+  "#productos-discontinuados"
+);
 
 let articulosCarrito = [];
-
 
 cargarEventListener();
 
 function cargarEventListener() {
-    //Cuando Agregas un Producto presionando Comprar
-    productosNuevos.addEventListener("click", agregarProducto);
-    productosDestacados.addEventListener("click", agregarProducto);
-    productosDiscontinuados.addEventListener("click", agregarProducto);
-    
-    
+  //Cuando Agregas un Producto presionando Comprar
+  productosNuevos.addEventListener("click", agregarProducto);
+  productosDestacados.addEventListener("click", agregarProducto);
+  productosDiscontinuados.addEventListener("click", agregarProducto);
+  botonSuscripcion.addEventListener("click", btnSuscripcion);
 }
 //Elimina productos
-carrito.addEventListener('click', eliminarProducto);
+carrito.addEventListener("click", eliminarProducto);
 
 //Muestra los productos de LocalStorage
-document.addEventListener('DOMContentLoaded', () => {
-    articulosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    carritoHTML();
-})
+document.addEventListener("DOMContentLoaded", () => {
+  articulosCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  carritoHTML();
+});
 
 //Vaciar el Carrito Btn
-vaciarCarritoBtn.addEventListener('click', () => {
-    articulosCarrito = []; //Resetear el arreglo
-    localStorage.removeItem('carrito');
-    limpiarHTML(); //Redibujamos el HTML
-})
+vaciarCarritoBtn.addEventListener("click", () => {
+  articulosCarrito = []; //Resetear el arreglo
+  localStorage.removeItem("carrito");
+  limpiarHTML(); //Redibujamos el HTML
+});
 
 //Funciones
+function btnSuscripcion(){
+    Swal.fire({    
+        text: 'Gracias por suscribirse',
+        icon: 'info'
+      })
+    
+}
 function agregarProducto(e) {
-    e.preventDefault();
-    console.log('funcion agregarProducto');
-    if (e.target.classList.contains("agregar-carrito")) {
-        const button = e.target;
-        const item = button.closest('.card');
+  e.preventDefault();
+  Swal.fire({    
+    text: 'Producto Agregado Correctamente',
+    icon: 'success'
+  })
+  console.log("funcion agregarProducto");
+  if (e.target.classList.contains("agregar-carrito")) {
+    const button = e.target;
+    const item = button.closest(".card");
 
-        leerDatosProducto(item);
-    }
+    leerDatosProducto(item);
+  }
 }
 
 //Eliminar Productoa
 function eliminarProducto(e) {
-    //Me aseguro de presionar donde la clase borrar-producto
-    if (e.target.classList.contains('borrar-producto')) {
-        //Guardo el valor del atributo data-id
-        const productId = e.target.getAttribute('data-id');
+  //Me aseguro de presionar donde la clase borrar-producto
+  if (e.target.classList.contains("borrar-producto")) {
+    //Guardo el valor del atributo data-id
+    const productId = e.target.getAttribute("data-id");
 
-        //Eliminar del Arreglo por el data-id
-        articulosCarrito = articulosCarrito.filter(producto => producto.id !== productId);
-        //Vuelvo a dibujar el carrito con el nuevo arreglo
-        carritoHTML();
-
-    }
+    //Eliminar del Arreglo por el data-id
+    articulosCarrito = articulosCarrito.filter(
+      (producto) => producto.id !== productId      
+    );
+    Swal.fire({    
+        text: 'Producto Eliminado con Exito',
+        icon: 'info'
+      })
+    //Vuelvo a dibujar el carrito con el nuevo arreglo
+    carritoHTML();
+  }
 }
 
 //Lee los datos
 function leerDatosProducto(producto) {
-    //Creo objeto con la informacion del producto seleccionado
-    const infoProducto = {
-        imagen: producto.querySelector('img').src,
-        descripcion: producto.querySelector('.card-title').textContent,
-        precio: producto.querySelector('.item-price').textContent,
-        id: producto.querySelector('input').getAttribute('data-id'),
-        cantidad: 1
-    }
+  //Creo objeto con la informacion del producto seleccionado
+  const infoProducto = {
+    imagen: producto.querySelector("img").src,
+    descripcion: producto.querySelector(".card-title").textContent,
+    precio: producto.querySelector(".item-price").textContent,
+    id: producto.querySelector("input").getAttribute("data-id"),
+    cantidad: 1,
+  };
 
-    //Reviso si existe ya el producto en el carrito
-    const existe = articulosCarrito.some(producto => producto.id === infoProducto.id);
-    if (existe) {
-        //Actualizo la cantidad
-        const productos = articulosCarrito.map(producto => {
-            if (producto.id === infoProducto.id) {
-                producto.cantidad++;
-                return producto; //Retorna el objeto actualizado
-            } else {
-                return producto; //Retorna los objetos no duplicados
-            }
-        });
-        articulosCarrito = [...productos];
-
-    } else {
-
-        //Agrega elementos al arreglo de carrito
-        articulosCarrito = [...articulosCarrito, infoProducto];
-    }
-    carritoHTML();
+  //Reviso si existe ya el producto en el carrito
+  const existe = articulosCarrito.some(
+    (producto) => producto.id === infoProducto.id
+  );
+  if (existe) {
+    //Actualizo la cantidad
+    const productos = articulosCarrito.map((producto) => {
+      if (producto.id === infoProducto.id) {
+        producto.cantidad++;
+        return producto; //Retorna el objeto actualizado
+      } else {
+        return producto; //Retorna los objetos no duplicados
+      }
+    });
+    articulosCarrito = [...productos];
+  } else {
+    //Agrega elementos al arreglo de carrito
+    articulosCarrito = [...articulosCarrito, infoProducto];
+  }
+  carritoHTML();
 }
 
 //Muestra el carrito en el HTML
 function carritoHTML() {
+  //Limpiar el HTML
+  limpiarHTML();
 
-    //Limpiar el HTML
-    limpiarHTML();
-
-    articulosCarrito.forEach(producto => {
-        const { imagen, descripcion, precio, cantidad, id } = producto;
-        const row = document.createElement('tr');
-        row.innerHTML = `
+  articulosCarrito.forEach((producto) => {
+    const { imagen, descripcion, precio, cantidad, id } = producto;
+    const row = document.createElement("tr");
+    row.innerHTML = `
         <td>
             <img src="${imagen}" width="100">
         </td>
@@ -121,100 +137,50 @@ function carritoHTML() {
         <a href="#" class="btn btn-danger borrar-producto" data-id="${id}"> x</a>
         </td>
       `;
-        //Agrega el row al tbody
-        contenedorCarrito.appendChild(row);
-    });
+    //Agrega el row al tbody
+    contenedorCarrito.appendChild(row);
+  });
 
-    guardarStorage();
-
+  guardarStorage();
 }
 
 //Funciones de LocalStorage
 function guardarStorage() {
-    localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
+  localStorage.setItem("carrito", JSON.stringify(articulosCarrito));
 }
 
 //Eliminar Productos del tbody
 function limpiarHTML() {
-    while (contenedorCarrito.firstChild) {
-        contenedorCarrito.removeChild(contenedorCarrito.firstChild);
-    }
+  while (contenedorCarrito.firstChild) {
+    contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+  }
 }
 
-
 //TimerCountDown
-$('#example').countdown({
-    date: '04/01/2021 00:00:00',
-    offset: -3,
-    day: 'Day',
-    days: 'Dias',
-    hour: 'Hora',
-    hours: 'Horas',
-    minute: 'Minuto',
-    minutes: 'Minutos',
-    second: 'Segundo',
-    seconds: 'Segundos'
+$("#example").countdown({
+  date: "04/01/2021 00:00:00",
+  offset: -3,
+  day: "Day",
+  days: "Dias",
+  hour: "Hora",
+  hours: "Horas",
+  minute: "Minuto",
+  minutes: "Minutos",
+  second: "Segundo",
+  seconds: "Segundos",
 });
 
 //PreLoader
 function counter() {
-    var count = setInterval(function() {
-        var c = parseInt($('.counter').text());
-        $('.counter').text((++c).toString());
-        if (c == 100) {
-            clearInterval(count);
-            $('.counter').addClass('hide')
-            $('.preloader').addClass('active')
-        }
-    }, 60)
-
+  var count = setInterval(function () {
+    var c = parseInt($(".counter").text());
+    $(".counter").text((++c).toString());
+    if (c == 100) {
+      clearInterval(count);
+      $(".counter").addClass("hide");
+      $(".preloader").addClass("active");
+    }
+  }, 60);
 }
 
-counter()
-
-
-
-
-//Consumir API
-/*
-$("#boton").on("click", leerApi);
-
-function leerApi() {
-    alert('Llamando a la API del BCRA, espere un cachito');
-    $.ajax({
-        url: 'http://api.estadisticasbcra.com/usd_of',
-        type: 'GET',
-        data: { d: "2021-02-03" },
-        // con la propiedad beforeSend le paso el tipo de autorizacion, en este caso será 'Bearer'  y luego el token que registré en el BCRA
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDYyNzE1MTksInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJwLnNhcmFzdWFAaG90bWFpbC5jb20ifQ.ynYRskQoA3kdMbfSOSkvUH2e2kIQyqzq6Sh0SgL9KT46hjoHrsfWCcZxwnDX0tW6I3fh-Q5Yb5iPXRz1Tli_Xw');
-        },
-
-        // si la conexion es exitosa, ejecutará la función "respuesta", definida allí mismo.
-        success: function(respuesta) {
-
-            // imprimo el valor de respuesta en la consola, para debug.
-            console.log(respuesta);
-
-            // creo una variable "listaAPI y le asigno el DIV que definí arriba, con el "id:lista-api".
-            var listaAPI = $("#lista-api");
-
-            $.each(respuesta, function(index, miembro) {
-                listaAPI.append(
-                    '<div>' +
-                    '<p>' + 'Fecha Cotizacion: ' + miembro.d + '<br>' +
-                    'Importe: $ ' + miembro.v + '<br>' +
-                    '<br>' + '______________________________________' +
-                    '</div>'
-                );
-            });
-        }, //fin function respuesta
-
-        error: function() {
-            alert("Hubo un error");
-            console.log("Error al leer la API");
-        }
-
-    });
-}
-*/
+counter();
