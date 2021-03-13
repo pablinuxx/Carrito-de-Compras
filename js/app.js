@@ -37,20 +37,18 @@ vaciarCarritoBtn.addEventListener("click", () => {
 });
 
 //Funciones
-function btnSuscripcion(){
-    Swal.fire({    
-        text: 'Gracias por suscribirse',
-        icon: 'info'
-      })
-    
+function btnSuscripcion() {
+  Swal.fire({
+    text: "Gracias por suscribirse",
+    icon: "info",
+  });
 }
 function agregarProducto(e) {
   e.preventDefault();
-  Swal.fire({    
-    text: 'Producto Agregado Correctamente',
-    icon: 'success'
-  })
-  console.log("funcion agregarProducto");
+  Swal.fire({
+    text: "Producto Agregado Correctamente",
+    icon: "success",
+  });
   if (e.target.classList.contains("agregar-carrito")) {
     const button = e.target;
     const item = button.closest(".card");
@@ -68,12 +66,12 @@ function eliminarProducto(e) {
 
     //Eliminar del Arreglo por el data-id
     articulosCarrito = articulosCarrito.filter(
-      (producto) => producto.id !== productId      
+      (producto) => producto.id !== productId
     );
-    Swal.fire({    
-        text: 'Producto Eliminado con Exito',
-        icon: 'info'
-      })
+    Swal.fire({
+      text: "Producto Eliminado con Exito",
+      icon: "info",
+    });
     //Vuelvo a dibujar el carrito con el nuevo arreglo
     carritoHTML();
   }
@@ -187,16 +185,33 @@ counter();
 
 //Ajax
 let xhttp = new XMLHttpRequest();
-xhttp.open('GET', 'https://randomuser.me/api/?results=3');
+xhttp.open(
+  "GET",
+  "https://randomuser.me/api/?results=4&nat=ES&inc=name,email,picture"
+);
 xhttp.send();
-xhttp.onreadystatechange=function(){
-  if (this.readyState ==4 && this.status ==200) {
-    let datosx = JSON.parse(this.responseText);   
-    const  datos = datosx.results;
-    console.log(datos);
-     const testimonioTexto = document.querySelector('.testiomonio-texto');     
-     console.log(datos[0].email);
-    
+xhttp.onreadystatechange = function () {
+  if (this.readyState == 4 && this.status == 200) {
+    let datosx = JSON.parse(this.responseText);
+    const datos = datosx.results;
+    pintarTestimonios(datos);
   }
-}
 
+  function pintarTestimonios(datos) {
+    const testimonios = document.querySelector("#testimonios");
+    for (let item of datos) {
+      testimonios.innerHTML += `
+      <div class="col-3 justify-content-between>
+    <div class="card" >
+  <img class="card-img-top" src=${item.picture.thumbnail} style="width:50%" class="img-thumbnail">
+  <div class="card-body">
+    <h5 class="card-title">${item.name.first}  ${item.name.last}</h5>
+    <q class="card-text font-italic">The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</q>
+    <strong class="py5">${item.email}</strong>
+  </div>
+</div>    
+</div>
+    `;
+    }
+  }
+};
