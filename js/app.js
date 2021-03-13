@@ -4,11 +4,8 @@ const contenedorCarrito = document.querySelector("#lista-carrito tbody");
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
 const productosNuevos = document.querySelector("#productos-nuevos");
 const productosDestacados = document.querySelector("#productos-destacados");
-const botonSuscripcion = document.querySelector("#boton-suscripcion");
-const productosDiscontinuados = document.querySelector(
-  "#productos-discontinuados"
-);
-
+const productosDiscontinuados = document.querySelector("#productos-discontinuados");
+const btncompletarCompra = $('#completar-compra').on("click", completarCompra);
 let articulosCarrito = [];
 
 cargarEventListener();
@@ -18,7 +15,10 @@ function cargarEventListener() {
   productosNuevos.addEventListener("click", agregarProducto);
   productosDestacados.addEventListener("click", agregarProducto);
   productosDiscontinuados.addEventListener("click", agregarProducto);
-  botonSuscripcion.addEventListener("click", btnSuscripcion);
+}
+
+function completarCompra(){
+  console.log('escribiendo..');
 }
 //Elimina productos
 carrito.addEventListener("click", eliminarProducto);
@@ -37,12 +37,7 @@ vaciarCarritoBtn.addEventListener("click", () => {
 });
 
 //Funciones
-function btnSuscripcion() {
-  Swal.fire({
-    text: "Gracias por suscribirse",
-    icon: "info",
-  });
-}
+
 function agregarProducto(e) {
   e.preventDefault();
   Swal.fire({
